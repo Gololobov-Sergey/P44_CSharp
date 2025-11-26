@@ -4,6 +4,22 @@ namespace P44_CSharp
 {
     internal class Program
     {
+
+        static void Test(ref int a, ref int[] arr, out int b)
+        {
+            arr[0] = 100;
+            //a = 100;
+
+            arr = new int[] { 5, 6, 7 };
+
+            b = 100;
+        }
+
+        static int Sum(int a, params int[] arr)
+        {
+            return arr.Sum();
+        }
+
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Blue;
@@ -11,6 +27,41 @@ namespace P44_CSharp
             Console.Title = "Слава Україні!";
             Console.OutputEncoding = Encoding.UTF8;
             Console.Clear();
+
+
+            // 26.11.2025
+
+
+            Student student = new Student("IT STEP");
+            student.Print();
+            Student.SetCount(1);
+            Console.WriteLine(Student.planet);
+            
+            Console.WriteLine(student.academy);
+
+            Student student1 = new Student("Vasya", new DateOnly(2000, 5, 15), "IT School");
+
+            
+
+            int a = 5;
+            int[] arr = { 1, 2, 3 };
+            
+            Test(ref a, ref arr, out int b);
+            Console.WriteLine(a);
+            Console.WriteLine(String.Join(", ", arr));
+            Console.WriteLine(b);
+
+            Console.WriteLine(Sum(1,2,3));
+
+
+
+            //Point p1 = new Point(2,3);
+            //Point p2 = p1;
+            //p2.X = 10;
+            //p1.Print();
+            //p2.Print();
+
+
 
             // 22.11.2025
 
@@ -34,18 +85,18 @@ namespace P44_CSharp
             //Console.WriteLine(Console.ReadLine()!.Split(" ", StringSplitOptions.RemoveEmptyEntries).Length);
 
 
-            string? input = Console.ReadLine();
+            //string? input = Console.ReadLine();
 
-            string golos = "aeiouAEIOUаеєиіїюяАЕЄИІЇЮЯ";
-            int count = 0;
-            foreach (char c in input!)
-            {
-                if (golos.Contains(c))
-                {
-                    count++;
-                }
-            }
-            Console.WriteLine($"Number of vowels: {count}");
+            //string golos = "aeiouAEIOUаеєиіїюяАЕЄИІЇЮЯ";
+            //int count = 0;
+            //foreach (char c in input!)
+            //{
+            //    if (golos.Contains(c))
+            //    {
+            //        count++;
+            //    }
+            //}
+            //Console.WriteLine($"Number of vowels: {count}");
 
 
 
