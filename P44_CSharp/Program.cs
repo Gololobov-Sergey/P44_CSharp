@@ -5,6 +5,8 @@ namespace P44_CSharp
     internal class Program
     {
 
+        enum Days { Sat, Sun, Mon, Tue, Wed, Thu, Fri };
+
         static void Test(ref int a, ref int[] arr, out int b)
         {
             arr[0] = 100;
@@ -32,7 +34,11 @@ namespace P44_CSharp
             // 26.11.2025
 
 
-            Student student = new Student("IT STEP");
+            ConsoleColor color = Console.BackgroundColor;
+
+
+
+            Student student = new Student("IT STEP") { Age = 30, MyProperty = "aa", MyProperty1 = 234 };
             student.Print();
             Student.SetCount(1);
             Console.WriteLine(Student.planet);
@@ -41,7 +47,8 @@ namespace P44_CSharp
 
             Student student1 = new Student("Vasya", new DateOnly(2000, 5, 15), "IT School");
 
-            
+            student.Age = 25;
+            Console.WriteLine(student.Age);
 
             int a = 5;
             int[] arr = { 1, 2, 3 };
@@ -53,6 +60,14 @@ namespace P44_CSharp
 
             Console.WriteLine(Sum(1,2,3));
 
+
+            foreach (var item in typeof(Student).GetMethods())
+            {
+                Console.WriteLine(item);
+            }
+
+
+            Console.WriteLine(student.MyProperty2);
 
 
             //Point p1 = new Point(2,3);

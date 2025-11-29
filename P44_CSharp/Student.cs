@@ -18,6 +18,39 @@ namespace P44_CSharp
 
         public readonly string academy;
 
+        int age;
+
+        public int Age
+        {
+            get { return age; }
+            set
+            {
+                if (value < 0 || value > 120)
+                {
+                    throw new Exception("Invalid age");
+                }
+                age = value;
+            }
+        }
+
+
+        private string myVar;
+
+        public string MyProperty
+        {
+            get { return myVar; }
+            set
+            {   // some validation 
+                myVar = value; 
+            }
+        }
+
+
+        public int MyProperty1 { get; set; } = 100;
+
+        public string[] MyProperty2 { get; set; } = { "Tcentr", "Ingul" };
+
+
 
         public Student(string academy)
         {
