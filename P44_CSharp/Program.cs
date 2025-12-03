@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace P44_CSharp
 {
@@ -31,43 +33,100 @@ namespace P44_CSharp
             Console.Clear();
 
 
+
+            // 03.12.2025
+
+            // +=, -=, *=, /=, %=, &=, |=, ^=, <<=, >>=
+            // a += b  <=>  a = a + b
+            // =,  ?: , new , as, is
+
+
+            Apple a1 = new Apple(ConsoleColor.Red, 150);
+            Apple a2 = new Apple(ConsoleColor.Green, 250);
+
+            Kompot k = a1 + a2;
+
+            Apple a3 = new Apple(ConsoleColor.Yellow, 200);
+
+            k += a3;
+
+            k += "water 1l";
+            k += "sugar 200gr";
+
+            k.PrintRecipe();
+
+
+
+            //Point p = new Point() { X = 5, Y = 10 };
+            //p.Print();
+            //Point p2 = -p;
+            //p2.Print();
+            //++p;
+            //p++;
+            //p.Print();
+
+            //Point p3 = p + p2;
+            //p3.Print();
+
+            //p2 += p;
+
+            //if(p)
+            //{
+            //    Console.WriteLine("p is true");
+            //}
+
+            //float f = (float)p;
+
+            //Console.WriteLine(p["X"]);
+            //Console.WriteLine(p[0,0]);
+
+            //Coordinate X = Coordinate.X;
+            //Console.WriteLine(p[X]);
+            //Console.WriteLine(p.X);
+
+
+            //Console.WriteLine(5 << 3);
+
+
             // 26.11.2025
 
 
-            ConsoleColor color = Console.BackgroundColor;
+            //ConsoleColor color = Console.BackgroundColor;
 
 
 
-            Student student = new Student("IT STEP") { Age = 30, MyProperty = "aa", MyProperty1 = 234 };
-            student.Print();
-            Student.SetCount(1);
-            Console.WriteLine(Student.planet);
-            
-            Console.WriteLine(student.academy);
+            //Student student = new Student("IT STEP") { Age = 30, MyProperty = "aa", MyProperty1 = 234 };
+            //student.Print();
+            //Student.SetCount(1);
+            //Console.WriteLine(Student.planet);
 
-            Student student1 = new Student("Vasya", new DateOnly(2000, 5, 15), "IT School");
+            //Console.WriteLine(student.academy);
 
-            student.Age = 25;
-            Console.WriteLine(student.Age);
+            //Student student1 = new Student("Vasya", new DateOnly(2000, 5, 15), "IT School");
 
-            int a = 5;
-            int[] arr = { 1, 2, 3 };
-            
-            Test(ref a, ref arr, out int b);
-            Console.WriteLine(a);
-            Console.WriteLine(String.Join(", ", arr));
-            Console.WriteLine(b);
+            //student.Age = 25;
+            //Console.WriteLine(student.Age);
 
-            Console.WriteLine(Sum(1,2,3));
+            //int a = 5;
+            //a++; 
+            //++a;
+            //int[] arr = { 1, 2, 3 };
 
+            //Test(ref a, ref arr, out int b);
+            //Console.WriteLine(a);
+            //Console.WriteLine(String.Join(", ", arr));
+            //Console.WriteLine(b);
 
-            foreach (var item in typeof(Student).GetMethods())
-            {
-                Console.WriteLine(item);
-            }
+            //Console.WriteLine(Sum(1,2,3));
 
 
-            Console.WriteLine(student.MyProperty2);
+            //foreach (var item in typeof(Student).GetMethods())
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            //Console.WriteLine(student.MyProperty2);
 
 
             //Point p1 = new Point(2,3);
