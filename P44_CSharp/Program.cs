@@ -41,19 +41,33 @@ namespace P44_CSharp
             // =,  ?: , new , as, is
 
 
-            Apple a1 = new Apple(ConsoleColor.Red, 150);
-            Apple a2 = new Apple(ConsoleColor.Green, 250);
+            //Apple a1 = new Apple { Color = ConsoleColor.Red, Weight = 150 };
+            //Apple a2 = new Apple { Color = ConsoleColor.Green, Weight = 250 };
 
-            Kompot k = a1 + a2;
+            //Kompot k = a1 + a2;
 
-            Apple a3 = new Apple(ConsoleColor.Yellow, 200);
+            //Apple a3 = new Apple { Color = ConsoleColor.Yellow, Weight = 200 };
 
-            k += a3;
+            //k += a3;
 
-            k += "water 1l";
-            k += "sugar 200gr";
+            //Kompot k2 = new Kompot();
+            //k2 += a2;
 
-            k.PrintRecipe();
+            //k += "water 1l";
+            //k += "sugar 200gr";
+
+            //k.PrintRecipe();
+
+            int? nullableInt = 10;
+            nullableInt ??= 5;
+            Console.WriteLine(nullableInt);
+
+
+            //Var a = new Var(10);
+            //Var b = new Var(12.36);
+            //Var c = new Var("120");
+
+            //Var d = a + b;
 
 
 
