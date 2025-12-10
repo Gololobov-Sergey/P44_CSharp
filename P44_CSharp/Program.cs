@@ -33,6 +33,57 @@ namespace P44_CSharp
             Console.Clear();
 
 
+            // 10.12.2025
+
+            //Human human = new Human(1, "John");
+
+            //human.Display();
+
+            //Human emp = new Employee(2, "Alice", 50000);
+            //emp.Display();
+
+            Human[] humans = new Human[]
+            {
+                
+                new Employee(4, "Eve", 60000),
+                new Director(5, "Bob", 80000, 100m),
+            };
+
+            foreach (Human h in humans)
+            {
+                //h.Display();
+                Console.WriteLine(h);
+                h.Me(); 
+
+
+                //// 
+                //try
+                //{
+                //    ((Employee)h).ShowIDs();
+                //}
+                //catch (Exception)
+                //{
+
+                //}
+
+
+                ////is
+                //if (h is Director)
+                //{
+                //    ((Director)h).ShowID();
+                //}
+
+
+                //// as
+                //Director? dir = h as Director;
+                //if (dir != null)
+                //{
+                //    dir.ShowID();
+                //}
+            }
+
+
+            Console.WriteLine(humans[0]);
 
             // 03.12.2025
 
@@ -58,9 +109,9 @@ namespace P44_CSharp
 
             //k.PrintRecipe();
 
-            int? nullableInt = 10;
-            nullableInt ??= 5;
-            Console.WriteLine(nullableInt);
+            //int? nullableInt = 10;
+            //nullableInt ??= 5;
+            //Console.WriteLine(nullableInt);
 
 
             //Var a = new Var(10);
