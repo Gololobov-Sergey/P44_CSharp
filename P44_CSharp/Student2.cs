@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace P44_CSharp
 {
-    partial class Student
+    partial class Student1
     {
         public void Print2()
         {

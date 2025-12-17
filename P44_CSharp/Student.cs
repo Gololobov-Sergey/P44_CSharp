@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace P44_CSharp
 {
-    public partial class Student
+    public partial class Student1
     {
         string? name;
 
@@ -52,17 +52,17 @@ namespace P44_CSharp
 
 
 
-        public Student(string academy)
+        public Student1(string academy)
         {
             this.academy = academy;
         }
 
-        static Student()
+        static Student1()
         {
             count = 0;
         }
 
-        public Student(string name, DateOnly bd, string academy)
+        public Student1(string name, DateOnly bd, string academy)
         {
             this.name = name;
             birthDay = bd;

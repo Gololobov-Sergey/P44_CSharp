@@ -24,6 +24,11 @@ namespace P44_CSharp
             return arr.Sum();
         }
 
+        static void PrintWorker(IWorker worker)
+        {
+            worker.Work();
+        }
+
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Blue;
@@ -32,6 +37,48 @@ namespace P44_CSharp
             Console.OutputEncoding = Encoding.UTF8;
             Console.Clear();
 
+
+            // 17.12.2025
+
+
+            Group group = new Group();
+            foreach (Student s in group)
+            {
+                Console.WriteLine(s);
+            }
+
+            group.Sort();
+            Console.WriteLine();
+
+            foreach (Student s in group)
+            {
+                Console.WriteLine(s);
+            }
+
+            //IWorker manager = new Manager { Name = "Vasya", Salary = 5000 };
+            //manager.Work();
+
+            //Robot robot = new Robot { Name = "R2D2" };
+            //robot.Work();
+
+            //PrintWorker(manager);
+
+            //Test t = new Test();
+            //t.Show();
+            //((IA)t).Show();
+            //((IB)t).Show();
+            //((IC)t).Show();
+
+
+
+            //IA a = new Test();
+            //a.Show();
+
+            //IB b = new Test();
+            //b.Show();
+
+            //IC c = new Test();
+            //c.Show();
 
             // 10.12.2025
 
@@ -42,48 +89,48 @@ namespace P44_CSharp
             //Human emp = new Employee(2, "Alice", 50000);
             //emp.Display();
 
-            Human[] humans = new Human[]
-            {
-                
-                new Employee(4, "Eve", 60000),
-                new Director(5, "Bob", 80000, 100m),
-            };
+            //Human[] humans = new Human[]
+            //{
 
-            foreach (Human h in humans)
-            {
-                //h.Display();
-                Console.WriteLine(h);
-                h.Me(); 
+            //    new Employee(4, "Eve", 60000),
+            //    new Director(5, "Bob", 80000, 100m),
+            //};
 
-
-                //// 
-                //try
-                //{
-                //    ((Employee)h).ShowIDs();
-                //}
-                //catch (Exception)
-                //{
-
-                //}
+            //foreach (Human h in humans)
+            //{
+            //    //h.Display();
+            //    Console.WriteLine(h);
+            //    h.Me(); 
 
 
-                ////is
-                //if (h is Director)
-                //{
-                //    ((Director)h).ShowID();
-                //}
+            //    //// 
+            //    //try
+            //    //{
+            //    //    ((Employee)h).ShowIDs();
+            //    //}
+            //    //catch (Exception)
+            //    //{
+
+            //    //}
 
 
-                //// as
-                //Director? dir = h as Director;
-                //if (dir != null)
-                //{
-                //    dir.ShowID();
-                //}
-            }
+            //    ////is
+            //    //if (h is Director)
+            //    //{
+            //    //    ((Director)h).ShowID();
+            //    //}
 
 
-            Console.WriteLine(humans[0]);
+            //    //// as
+            //    //Director? dir = h as Director;
+            //    //if (dir != null)
+            //    //{
+            //    //    dir.ShowID();
+            //    //}
+            //}
+
+
+            //Console.WriteLine(humans[0]);
 
             // 03.12.2025
 
