@@ -41,19 +41,63 @@ namespace P44_CSharp
             // 17.12.2025
 
 
-            Group group = new Group();
-            foreach (Student s in group)
-            {
-                Console.WriteLine(s);
-            }
+            //Group group = new Group();
+            //foreach (Student s in group)
+            //{
+            //    Console.WriteLine(s);
+            //}
 
-            group.Sort();
-            Console.WriteLine();
+            //group.Sort();
+            //Console.WriteLine();
 
-            foreach (Student s in group)
-            {
-                Console.WriteLine(s);
-            }
+            //foreach (Student s in group)
+            //{
+            //    Console.WriteLine(s);
+            //}
+
+            ////group.Sort(new BirthDayComparer());
+            //group.Sort(Student.FromBirthDay);
+            //group.Sort(Student.FromStudentCard);
+
+            //Console.WriteLine();
+
+            //foreach (Student s in group)
+            //{
+            //    Console.WriteLine(s);
+            //}
+
+            //group.Sort(new StudentCardComparer());
+
+            //Console.WriteLine();
+
+            //foreach (Student s in group)
+            //{
+            //    Console.WriteLine(s);
+            //}
+
+
+            //Student s = new Student { FirstName = "Vasya", LastName = "Pupkin", 
+            //    BirthDay = new DateOnly(2000,5,15),
+            //    StudentCard = new StudentCard { Series = "AB", Number = 123456 }
+            //};
+
+
+            //Student s1 = (Student)s.Clone();
+
+            //s.FirstName = "Petro";
+            //s.StudentCard.Number = 99999;
+
+            //Console.WriteLine(s);
+            //Console.WriteLine(s1);
+
+
+            Remote remote = new Remote(new TV());
+
+            while (true)
+                remote.PressKey();
+
+
+
 
             //IWorker manager = new Manager { Name = "Vasya", Salary = 5000 };
             //manager.Work();
