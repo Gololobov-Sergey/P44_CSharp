@@ -50,6 +50,23 @@ namespace P44_CSharp
             // if(sc(students[0], students[1])) { ... }
         }
 
+        static T MaxElem<T>(T[] arr) where T : IComparable<T>
+        {
+            T max = arr[0];
+            foreach (T item in arr)
+            {
+                if (item.CompareTo(max) > 0)
+                {
+                    max = item;
+                }
+            }
+            return max;
+        }
+
+        //delegate void MyDelegate<T1, T2, T3>(T1 a, T2 b);
+        //delegate T3 MyDelegate<T1, T2, T3, T4>(T1 a, T2 b);
+
+
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Blue;
@@ -62,42 +79,104 @@ namespace P44_CSharp
             // 24.12.2025
 
 
-            Hashtable group = new Hashtable
+            List<Student> students = new List<Student>
             {
-                { 
-                    new Student
+                new Student
+                {
+                    FirstName = "Vasya",
+                    LastName = "Pupkin",
+                    BirthDay = new DateOnly(2000, 1, 1),
+                    StudentCard = new StudentCard
                     {
-                        FirstName = "Vasya",
-                        LastName = "Pupkin",
-                        BirthDay = new DateOnly(2000, 5, 15),
-                        StudentCard = new StudentCard { Series = "AB", Number = 123456 }
-                    },
-                    new ArrayList{7,7,8} 
+                        Series = "AB",
+                        Number = 123456
+                    }
                 },
-                { 
-                    new Student
+                new Student
+                {
+                    FirstName = "Anna",
+                    LastName = "Frolova",
+                    BirthDay = new DateOnly(1999, 5, 15),
+                    StudentCard = new StudentCard
                     {
-                        FirstName = "Petro",
-                        LastName = "Ivanov",
-                        BirthDay = new DateOnly(1999, 3, 22),
-                        StudentCard = new StudentCard { Series = "CD", Number = 654321 }
-                    }, new ArrayList{7,7,8} },
-                { 
-                    new Student
+                        Series = "AB",
+                        Number = 123455
+                    }
+                },
+                new Student
+                {
+                    FirstName = "Olga",
+                    LastName = "Petrov",
+                    BirthDay = new DateOnly(2000, 1, 2),
+                    StudentCard = new StudentCard
                     {
-                        FirstName = "Olena",
-                        LastName = "Shevchenko",
-                        BirthDay = new DateOnly(2001, 11, 5),
-                        StudentCard = new StudentCard { Series = "EF", Number = 112233 }
-                    }, new ArrayList{9,8,10} }
+                        Series = "AC",
+                        Number = 123455
+                    }
+                },
+                new Student
+                {
+                    FirstName = "Oleg",
+                    LastName = "Petrov",
+                    BirthDay = new DateOnly(1999, 5, 10),
+                    StudentCard = new StudentCard
+                    {
+                        Series = "AC",
+                        Number = 123454
+                    }
+                }
             };
 
+            students.ForEach(s => Console.WriteLine(s));
 
-            printStudentList(group);
 
-            addMarkStudent(group, "Vasya", "Pupkin", 9);
+            //Action<int, int> del = (a, b) => Console.WriteLine(a + b);
+            ////MyDelegate<string, string, string> delStr = (a, b) => a.Length > b.Length ? a : b;
 
-            printStudentList(group);
+
+            //List<Student> list = [];
+
+            //Point<int> p1 = new Point<int> { X = 5, Y = 10 };
+            //Point<string> p2 = new Point<string> { X = "5", Y = "10" };
+
+
+            //Hashtable group = new Hashtable
+            //{
+            //    { 
+            //        new Student
+            //        {
+            //            FirstName = "Vasya",
+            //            LastName = "Pupkin",
+            //            BirthDay = new DateOnly(2000, 5, 15),
+            //            StudentCard = new StudentCard { Series = "AB", Number = 123456 }
+            //        },
+            //        new ArrayList{7,7,8} 
+            //    },
+            //    { 
+            //        new Student
+            //        {
+            //            FirstName = "Petro",
+            //            LastName = "Ivanov",
+            //            BirthDay = new DateOnly(1999, 3, 22),
+            //            StudentCard = new StudentCard { Series = "CD", Number = 654321 }
+            //        }, new ArrayList{7,7,8} },
+            //    { 
+            //        new Student
+            //        {
+            //            FirstName = "Olena",
+            //            LastName = "Shevchenko",
+            //            BirthDay = new DateOnly(2001, 11, 5),
+            //            StudentCard = new StudentCard { Series = "EF", Number = 112233 }
+            //        }, new ArrayList{9,8,10} }
+            //};
+
+
+            //printStudentList(group); // Vasya Pupkin: 7,7,8
+            //Console.WriteLine();
+
+            //addMarkStudent(group, "Vasya", "Pupkin", 12);
+
+            //printStudentList(group);
 
 
             //ShowMessage show = new ShowMessage(ShowHello);
@@ -641,6 +720,33 @@ namespace P44_CSharp
 
             //Console.WriteLine();
 
+        }
+
+        private static void addMarkStudent(Hashtable group, string v1, string v2, int v3)
+        {
+            foreach (Student item in group.Keys)
+            {
+                if (item.FirstName == v1 && item.LastName == v2)
+                {
+                    ArrayList marks = (ArrayList)(group[item]);
+                    marks.Add(v3);
+                    break;
+                }
+            }
+        }
+
+        private static void printStudentList(Hashtable group)
+        {
+            foreach (Student item in group.Keys)
+            {
+                ArrayList marks = (ArrayList)(group[item]);
+                Console.Write($"{item.FirstName} {item.LastName} : ");
+                foreach (int mark in marks)
+                {
+                    Console.Write($"{mark},");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
