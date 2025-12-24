@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -29,6 +30,26 @@ namespace P44_CSharp
             worker.Work();
         }
 
+        delegate void ShowMessage();
+
+
+        static void ShowHello()
+        {
+            Console.WriteLine("Hello");
+        }
+
+        static void Goodbye()
+        {
+            Console.WriteLine("Goodbye");
+        }
+
+        delegate bool StudentComparer(Student s1, Student s2);
+
+        static void Sort(Student[] students, StudentComparer sc)
+        {
+            // if(sc(students[0], students[1])) { ... }
+        }
+
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Blue;
@@ -36,6 +57,90 @@ namespace P44_CSharp
             Console.Title = "Слава Україні!";
             Console.OutputEncoding = Encoding.UTF8;
             Console.Clear();
+
+
+            // 24.12.2025
+
+
+            Hashtable group = new Hashtable
+            {
+                { 
+                    new Student
+                    {
+                        FirstName = "Vasya",
+                        LastName = "Pupkin",
+                        BirthDay = new DateOnly(2000, 5, 15),
+                        StudentCard = new StudentCard { Series = "AB", Number = 123456 }
+                    },
+                    new ArrayList{7,7,8} 
+                },
+                { 
+                    new Student
+                    {
+                        FirstName = "Petro",
+                        LastName = "Ivanov",
+                        BirthDay = new DateOnly(1999, 3, 22),
+                        StudentCard = new StudentCard { Series = "CD", Number = 654321 }
+                    }, new ArrayList{7,7,8} },
+                { 
+                    new Student
+                    {
+                        FirstName = "Olena",
+                        LastName = "Shevchenko",
+                        BirthDay = new DateOnly(2001, 11, 5),
+                        StudentCard = new StudentCard { Series = "EF", Number = 112233 }
+                    }, new ArrayList{9,8,10} }
+            };
+
+
+            printStudentList(group);
+
+            addMarkStudent(group, "Vasya", "Pupkin", 9);
+
+            printStudentList(group);
+
+
+            //ShowMessage show = new ShowMessage(ShowHello);
+            //ShowMessage show1 = new ShowMessage(Goodbye);
+            //Delegate.Combine(show, show1);
+
+            ////show();
+
+            //show += Goodbye;
+
+            ////show();
+
+            //show += ShowHello;
+
+            //show -= Goodbye;
+
+            //Student s = new Student
+            //{
+            //    FirstName = "Vasya",
+            //    LastName = "Pupkin",
+            //    BirthDay = new DateOnly(2000, 5, 15),
+            //    StudentCard = new StudentCard { Series = "AB", Number = 123456 }
+            //};
+
+            //show += s.Test;
+
+
+
+            //foreach (var item in show.GetInvocationList())
+            //{
+            //    item.DynamicInvoke();
+            //    Console.WriteLine($"{item.Target} {item.Method}");
+            //}
+
+
+            //((Student)(((ShowMessage)show.GetInvocationList()[3]).Target)).FirstName = "Petro";
+
+            //Console.WriteLine(s);
+
+
+
+
+
 
 
             // 17.12.2025
@@ -91,10 +196,10 @@ namespace P44_CSharp
             //Console.WriteLine(s1);
 
 
-            Remote remote = new Remote(new TV());
+            //Remote remote = new Remote(new TV());
 
-            while (true)
-                remote.PressKey();
+            //while (true)
+            //    remote.PressKey();
 
 
 

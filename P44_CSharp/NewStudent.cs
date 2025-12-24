@@ -62,6 +62,16 @@ namespace P44_CSharp
             temp.StudentCard = this.StudentCard!.Clone() as StudentCard;
             return temp;
         }
+
+        public void Test()
+        {
+            Console.WriteLine("Test Student");
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{LastName}{FirstName}".GetHashCode();
+        }
     }
 
 
