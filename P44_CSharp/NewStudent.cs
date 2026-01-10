@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace P44_CSharp
 {
@@ -64,6 +65,20 @@ namespace P44_CSharp
         public override int GetHashCode()
         {
             return $"{LastName}{FirstName}".GetHashCode();
+        }
+
+        // # 1
+        //public void Exam(string date)
+        //{
+        //    Console.WriteLine($"Екзамен для {LastName + " " + FirstName} назначено на {date}");
+        //}
+
+        // #2
+        public void Exam(object sender, ExamEventArgs args)
+        {
+            Teacher t  = sender as Teacher;
+            Console.WriteLine($"Викладач {t.Name} назначив екзамен для {LastName + " " + FirstName} " +
+                $"по предмету {args.Subject} на {args.Date}. {args.Message}");
         }
     }
 
@@ -156,5 +171,75 @@ namespace P44_CSharp
         {
             return s1!.StudentCard!.CompareTo(s2!.StudentCard);
         }
+    }
+
+    //delegate void ExamDelegate(string date);
+
+    //delegate void Action(string date);
+
+    class Teacher
+    {
+
+        public string Name { get; set; }
+
+        // # 1
+        //public event Action<string> Exam;
+
+        //public void SetExam(string date)
+        //{
+        //    //Exam?.Invoke(date);
+
+        //    if (Exam != null)
+        //    {
+        //        Exam(date);
+        //    }
+        //}
+
+
+        // # 2
+
+        SortedList<string, EventHandler<ExamEventArgs>> list = new();
+
+        public event EventHandler<ExamEventArgs> Exam
+        {
+            add 
+            {
+                Student? s = value!.Target as Student;
+                var name = s.LastName + " " + s.FirstName;
+                list.Add(name, value);
+            }
+            remove 
+            {
+                Student? s = value!.Target as Student;
+                var name = s.LastName + " " + s.FirstName;
+                list.Remove(name);
+            }
+        }
+
+        public void SetExam(ExamEventArgs examEvent)
+        {
+            //Exam?.Invoke(date);
+
+            //if (Exam != null)
+            //{
+            //    Exam(this, examEvent);
+            //}
+
+
+            foreach (string item in list.Keys)
+            {
+                list[item](this, examEvent);
+            }
+        }
+    }
+
+
+    class ExamEventArgs : EventArgs
+    {
+        public string Subject { get; set; }
+
+        public string Message { get; set; }
+
+        public DateOnly Date { get; set; }
     }
 }

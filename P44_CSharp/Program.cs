@@ -3,6 +3,7 @@ using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 
+
 namespace P44_CSharp
 {
     internal class Program
@@ -63,6 +64,11 @@ namespace P44_CSharp
             return max;
         }
 
+        static int FFF(int a, double b)
+        {
+            return a + (int)b;
+        }
+
         //delegate void MyDelegate<T1, T2, T3>(T1 a, T2 b);
         //delegate T3 MyDelegate<T1, T2, T3, T4>(T1 a, T2 b);
 
@@ -78,6 +84,8 @@ namespace P44_CSharp
 
             // 24.12.2025
 
+            //Func<int, double, int> fff = FFF;
+
 
             List<Student> students = new List<Student>
             {
@@ -85,7 +93,7 @@ namespace P44_CSharp
                 {
                     FirstName = "Vasya",
                     LastName = "Pupkin",
-                    BirthDay = new DateOnly(2000, 1, 1),
+                    BirthDay = new DateOnly(2000, 12, 1),
                     StudentCard = new StudentCard
                     {
                         Series = "AB",
@@ -106,7 +114,7 @@ namespace P44_CSharp
                 new Student
                 {
                     FirstName = "Olga",
-                    LastName = "Petrov",
+                    LastName = "Petrova",
                     BirthDay = new DateOnly(2000, 1, 2),
                     StudentCard = new StudentCard
                     {
@@ -127,7 +135,35 @@ namespace P44_CSharp
                 }
             };
 
-            students.ForEach(s => Console.WriteLine(s));
+
+            Teacher t = new Teacher { Name = "Gololobov S.A." };
+
+            foreach (Student st in students)
+            {
+                t.Exam += st.Exam;
+            }
+
+            t.SetExam(new ExamEventArgs { Subject = "C#", Date = new DateOnly(2026, 1, 15)});
+
+            t.Exam -= students[2].Exam;
+
+            Console.WriteLine();
+            t.SetExam(new ExamEventArgs { Subject = "C#", Date = new DateOnly(2026, 1, 15), Message = "переекзаменовка" });
+
+
+            //students.ForEach(s => s.LastName = "XXX");
+
+            //students.ForEach(s => Console.WriteLine(s));
+
+            //Console.WriteLine(students.All(s => s.LastName == "XXX"));
+
+            //students.Select(s => s.FirstName + " " + s.LastName).ToList().ForEach(fn => Console.WriteLine(fn));
+
+            //students.FindAll(s => s.BirthDay.Month == 5).ForEach(s => Console.WriteLine(s));
+
+            //students.Sort((s1, s2) => s1.BirthDay.Day.CompareTo(s2.BirthDay.Day));
+            //students.ForEach(s => Console.WriteLine(s));
+
 
 
             //Action<int, int> del = (a, b) => Console.WriteLine(a + b);
@@ -721,6 +757,7 @@ namespace P44_CSharp
             //Console.WriteLine();
 
         }
+
 
         private static void addMarkStudent(Hashtable group, string v1, string v2, int v3)
         {
